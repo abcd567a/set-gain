@@ -161,4 +161,5 @@ echo ""
 echo "PLEASE DO FOLLOWING:"
 echo "(1) Edit file /usr/share/dump1090-fa/html/index.html and add code"
 echo "(2) Add entry in crontab to run setgain.sh at boot."
+echo "(3) After completing above two steps, Reboot Pi"
 
