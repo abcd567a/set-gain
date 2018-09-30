@@ -3,15 +3,21 @@
 echo "Updating apt......"
 sudo apt update
 
-
-echo "Installing  package php5-cgi/php7.0-cgi ....."
+echo ""
+echo "Checking Distro Version ....."
 CODENAME=`lsb_release -sc`
 if [[ ${CODENAME} == "jessie" ]];
- then echo "Detected" ${CODENAME}". Installing php5-cgi....";
+ then
+ echo "Detected" ${CODENAME}".... ";
+ echo "";
+ echo "Installing php5-cgi....";
  sudo apt install -y php5-cgi;
 
 elif [[ ${CODENAME} == "stretch" ]];
- then echo "Detected" ${CODENAME}". Installing php7.0-cgi....";
+ then
+ echo "Detected" ${CODENAME}"....";
+ echo ""
+ echo " Installing php7.0-cgi....";
  sudo apt install -y php7.0-cgi;
 fi
 
@@ -159,8 +165,35 @@ echo $FILE_GAIN
 echo $FILE_SETGAIN
 echo ""
 echo ""
+echo "=========================================="
 echo "PLEASE DO FOLLOWING:"
-echo "(1) Edit file /usr/share/dump1090-mutability/html/index.html and add code"
-echo "(2) Add entry in crontab to run setgain.sh at boot."
-echo "(3) After completing above two steps, Reboot Pi"
+echo "=========================================="
+echo "(1) Add entry in crontab to run setgain.sh at boot."
+echo "    Give command:  sudo crontab -e "
+echo "    In file opened, scroll down and at bottom add following line"
+echo ""
+echo "    @reboot /bin/bash /usr/local/sbin/gain/setgain.sh "
+echo ""
+echo "(2) After completing above step, Reboot Pi to start setgain script"
+echo ""
+echo "(3) Make a backup copy of file index.html by following commands..."
+echo ""
+echo "    cd /usr/share/dump1090-fa/html  "
+echo "    sudo cp index.html index.html.orig "
+echo ""
+echo "(4) Open file index.html for editing "
+echo "    sudo nano /usr/share/dump1090-fa/html/index.html "
+echo ""
+echo "    Press Ctrl+W and type  sudo_buttons  and press Enter key "
+echo '    the cursor will jump to <div id="sudo_buttons">'
+echo '    add following 3 lines of code just above line <div id="sudo_buttons">'
+echo ""
+echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
+echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
+echo '    </div> <!----- GAIN --->'
+echo ""
+echo "(5) After completing steps (3) and (4), "
+echo "    (a) Reboot RPi "
+echo "    (b) After reboot, clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5)"
+echo ""
 
