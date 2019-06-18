@@ -138,8 +138,10 @@ do
         read line < <(tr -cd  '.\-0123456789\n' < $fifo)
 
         #set new gain
-        sed -i '/RECEIVER_OPTIONS=.*/c\RECEIVER_OPTIONS="--device-index 0 --gain '$line' --ppm 0 --net-bo-port 30005"' /etc/default/dump1090-fa
-
+        #sed -i '/RECEIVER_OPTIONS=.*/c\RECEIVER_OPTIONS="--device-index 0 --gain '$line' --ppm 0 --net-bo-port 30005"' /etc/default/dump1090-fa
+        gainnow=`sed -n 's/.* --gain \([^ ]*\).*/\1/p' /etc/default/dump1090-fa`
+        sudo sed -i 's/--gain '$gainnow'/--gain '$line'/' /etc/default/dump1090-fa
+        
         #restart dump1090-fa to implement new gain value
         systemctl restart dump1090-fa
 
