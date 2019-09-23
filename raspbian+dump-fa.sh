@@ -14,12 +14,19 @@ if [[ ${CODENAME} == "jessie" ]];
  echo " Installing php5-cgi....";
  sudo apt install -y php5-cgi;
 
-elif [[ ${CODENAME} == "stretch" ]];
+if [[ ${CODENAME} == "stretch" ]];
  then
  echo "Detected" ${CODENAME}".... ";
  echo ""
  echo " Installing php7.0-cgi....";
  sudo apt install -y php7.0-cgi;
+ 
+elif [[ ${CODENAME} == "buster" ]];
+ then
+ echo "Detected" ${CODENAME}".... ";
+ echo ""
+ echo " Installing php7.3-cgi....";
+ sudo apt install -y php7.3-cgi;
 fi
 
 echo ""
