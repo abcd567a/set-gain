@@ -14,7 +14,7 @@ if [[ ${CODENAME} == "jessie" ]];
  echo " Installing php5-cgi....";
  sudo apt install -y php5-cgi;
 
-if [[ ${CODENAME} == "stretch" ]];
+elif [[ ${CODENAME} == "stretch" ]];
  then
  echo "Detected" ${CODENAME}".... ";
  echo ""
