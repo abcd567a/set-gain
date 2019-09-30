@@ -12,14 +12,14 @@
 </br></br>
 ### (B) After running above script, do following:
 
-(1) Add entry in crontab to run setgain.sh at boot as follows: </br>
+**(1) Add entry in crontab to run setgain.sh at boot as follows:** </br>
 &nbsp; &nbsp; &nbsp; (a) Give command:  `sudo crontab -e ` </br>
 &nbsp; &nbsp; &nbsp; (b) In file opened, scroll down and at bottom add following line </br>
 &nbsp; &nbsp; &nbsp; `@reboot /bin/bash /usr/local/sbin/gain/setgain.sh `
 
-(2) After completing above step, Reboot Pi to start setgain script
+**(2) After completing above step, Reboot Pi to start setgain script** </br>
 
-(3) Embedd "Set Gain" button into Skyview Map / Gmap
+**(3) Embedd "Set Gain" button into Skyview Map / Gmap** </br>
 <details close>
 <summary>dump1090-fa</summary>
 </br>
