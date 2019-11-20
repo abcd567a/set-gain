@@ -21,7 +21,7 @@
 
 **(3) Embedd "Set Gain" button into Skyview Map / Gmap** </br>
 <details close>
-<summary>dump1090-fa</summary>
+<summary>dump1090-fa (click to expand)</summary>
 </br>
 3.1 - Make a backup copy of file index.html by following commands...
 ```
@@ -51,7 +51,7 @@ index.html  index.html.orig
 </details>
 
  <details close>
-<summary>dump1090-mutability</summary>
+<summary>dump1090-mutability (click to expand)</summary>
 </br>
 3.1 - Make a backup copy of file gmap.html by following commands...
 ```
