@@ -23,15 +23,20 @@
 <details close>
 <summary>dump1090-fa (click to expand)</summary>
 </br>
-3.1 - Make a backup copy of file index.html by following commands...
+3.1 - Make a backup copy of file index.html by following commands...</br>
+
+
 ```
-cd /usr/share/dump1090-fa/html
-sudo cp index.html index.html.orig
+cd /usr/share/dump1090-fa/html 
+sudo cp index.html index.html.orig 
 # Check backup is created
-ls index*
+ls index* 
 # Above command will list both files
 index.html  index.html.orig
 ```    
+
+</br>
+
 3.2 - Open file index.html for editing </br>
     `sudo nano /usr/share/dump1090-fa/html/index.html ` </br>
  </br>
@@ -53,7 +58,8 @@ index.html  index.html.orig
  <details close>
 <summary>dump1090-mutability (click to expand)</summary>
 </br>
-3.1 - Make a backup copy of file gmap.html by following commands...
+3.1 - Make a backup copy of file gmap.html by following commands... </br>
+
 ```
 cd /usr/share/dump1090-mutability/html
 sudo cp gmap.html gmap.html.orig
@@ -62,6 +68,9 @@ ls gmap*
 # Above command will list both files
 gmap.html  gmap.html.orig
 ```    
+
+</br>
+
 3.2 - Open file gmap.html for editing </br>
     `sudo nano /usr/share/dump1090-mutability/html/gmap.html ` </br>
  </br>
