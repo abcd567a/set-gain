@@ -21,6 +21,13 @@ elif [[ ${CODENAME} == "stretch" ]];
  echo "Installing php7.0-cgi....";
  echo ""
  sudo apt install -y php7.0-cgi;
+ 
+ elif [[ ${CODENAME} == "buster" ]];
+ then
+ echo "Detected" ${CODENAME}".... ";
+ echo ""
+ echo " Installing php7.3-cgi....";
+ sudo apt install -y php7.3-cgi;
 fi
 
 echo "Enabling module fastcgi-php...."
