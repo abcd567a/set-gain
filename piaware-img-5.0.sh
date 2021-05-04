@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Updating apt......"
+echo "Updating apt......\e[39m"
 sudo apt update
 
-echo " Installing php-cgi...."
+echo -e "\e[32mInstalling php-cgi...."
 sudo apt install -y php-cgi
 
 # Before enabling module fastcgi-php, detect if package php-cgi is installed, 
@@ -19,7 +19,7 @@ if [[ $(dpkg-query -W -f='${STATUS}' php-cgi 2>/dev/null | grep -c "ok installed
   exit 1
 fi
 
-echo "Enabling module fastcgi-php...."
+echo -e "\e[32mEnabling module fastcgi-php....\e[39m"
 sudo lighty-enable-mod fastcgi-php
 sudo /etc/init.d/lighttpd force-reload
 
