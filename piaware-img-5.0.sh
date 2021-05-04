@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Updating apt......\e[39m"
+echo -e "\e[32mUpdating apt......\e[39m"
 sudo apt update
 
-echo -e "\e[32mInstalling php-cgi...."
+echo -e "\e[32mInstalling php-cgi....\e[39m"
 sudo apt install -y php-cgi
 
 # Before enabling module fastcgi-php, detect if package php-cgi is installed, 
