@@ -137,9 +137,6 @@ do
         read line < <(tr -cd  '.\-0123456789\n' < $fifo978)
 
         #set new gain
-        #sed -i '/RECEIVER_OPTIONS=.*/c\RECEIVER_OPTIONS="--device-index 0 --gain '$line' --ppm 0 --net-bo-port 30005"' /etc/default/dump1090-fa
-        #sudo sed -i '/DECODER_OPTIONS/c\DECODER_OPTIONS=" --sdr-gain '$line' "' /etc/default/dump978-fa
-
         gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
 
