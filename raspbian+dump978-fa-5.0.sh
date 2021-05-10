@@ -142,7 +142,7 @@ do
         #sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
 
         #restart dump1090-fa to implement new gain value
-        systemctl restart dump1090-fa
+        systemctl restart dump978-fa
 
         # read updated gain and store in file currentgain
         awk '{for(i=1;i<=NF;i++) if ($i=="--sdr-gain") print $(i+1)}' /etc/default/dump978-fa > /usr/local/sbin/gain978/currentgain
