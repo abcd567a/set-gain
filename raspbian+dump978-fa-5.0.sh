@@ -85,7 +85,7 @@ echo "Code written to file gain.php...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
-echo "adding gain setting ' --sdr-gain 49 ' to RECEIVER_OPTIONS ..."
+echo "adding gain setting ' --sdr-gain 49.6 ' to RECEIVER_OPTIONS ..."
 sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS=" --sdr-gain 49.6 /' /etc/default/dump978-fa
 
 echo "Creating folder gain978...."
