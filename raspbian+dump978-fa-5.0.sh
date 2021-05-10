@@ -86,6 +86,8 @@ echo "Code written to file gain.php...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
+echo "adding gain setting ' --sdr-gain 49 ' to RECEIVER_OPTIONS ..."
+sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS=" --sdr-gain 49 /' /etc/default/dump978-fa
 
 echo "Creating folder gain978...."
 sudo mkdir -p /usr/local/sbin/gain978
@@ -136,12 +138,12 @@ do
 
         #set new gain
         #sed -i '/RECEIVER_OPTIONS=.*/c\RECEIVER_OPTIONS="--device-index 0 --gain '$line' --ppm 0 --net-bo-port 30005"' /etc/default/dump1090-fa
-        sudo sed -i '/DECODER_OPTIONS/c\DECODER_OPTIONS=" --sdr-gain '$line' "' /etc/default/dump978-fa
+        #sudo sed -i '/DECODER_OPTIONS/c\DECODER_OPTIONS=" --sdr-gain '$line' "' /etc/default/dump978-fa
 
         gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
-        #sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
+        sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
 
-        #restart dump1090-fa to implement new gain value
+        #restart dump978-fa to implement new gain value
         systemctl restart dump978-fa
 
         # read updated gain and store in file currentgain
