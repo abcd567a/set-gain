@@ -141,7 +141,6 @@ do
         gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         #sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
 
-        
         #restart dump1090-fa to implement new gain value
         systemctl restart dump1090-fa
 
