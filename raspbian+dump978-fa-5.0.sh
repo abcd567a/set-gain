@@ -40,7 +40,6 @@ sudo cat <<\EOT > $FILE_GAIN
  <form id="myform" action="gain.php" method="post" />
  <div><font color=#ff0000 face="'Helvetica Neue', Helvetica, Arial, sans-serif">Current Gain: <?php system('cat /usr/local/sbin/gain978/currentgain');?> </font></div>
  <select name="gain" id="gain">
-   <option value=-10>-10</option>
    <option value=49.6>49.6</option>
    <option value=48.0>48.0</option>
    <option value=44.5>44.5</option>
@@ -87,7 +86,7 @@ echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
 echo "adding gain setting ' --sdr-gain 49 ' to RECEIVER_OPTIONS ..."
-sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS=" --sdr-gain 49 /' /etc/default/dump978-fa
+sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS=" --sdr-gain 49.6 /' /etc/default/dump978-fa
 
 echo "Creating folder gain978...."
 sudo mkdir -p /usr/local/sbin/gain978
