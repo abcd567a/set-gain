@@ -85,8 +85,15 @@ echo "Code written to file gain.php...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
-echo "adding gain setting ' --sdr-gain 48 ' to RECEIVER_OPTIONS ..."
-sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS=" --sdr-gain 48 /' /etc/default/dump978-fa
+echo "adding space after first double-quote & before last double-quote in file dump978-fa...."
+sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
+sudo sed -i 's/="/=" /' /etc/default/dump978-fa
+
+echo "adding gain setting ' --sdr-gain 48 ' to RECEIVER_OPTIONS in file dump978-fa..."
+if [[ $(grep sdr-gain /etc/default/dump978-fa ) -eq 0 ]] ; then
+        echo "sdr-gain NOT found";
+        sudo sed -i 's/RECEIVER_OPTIONS=" /RECEIVER_OPTIONS=" --sdr-gain 48 /' /etc/default/dump978-fa  
+fi 
 
 echo "Creating folder gain978...."
 sudo mkdir -p /usr/local/sbin/gain978
