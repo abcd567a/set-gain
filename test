@@ -143,7 +143,7 @@ do
         read line < <(tr -cd  '.\-0123456789\n' < $fifo978)
 
         #set new gain
-        gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
+        gainnow=`sed -n 's/.*--sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
         
         #restart dump978-fa to implement new gain value
