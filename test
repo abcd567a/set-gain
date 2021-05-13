@@ -114,6 +114,16 @@ rm -f $fifo978
 # create the named pipe with write access for everyone
 mkfifo -m 666 $fifo978
 
+## in file /etc/default/dump978-fa, add space before last double quote 
+echo "adding space before last double quote...."
+sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
+
+## in file /etc/default/dump978-fa, if parameter --sdr-gain is not already there, add --sdr-gain 45 as default
+if [[ $(grep sdr-gain /etc/default/dump978-fa ) -eq 0 ]] ; then
+        echo "parameter sdr-gain NOT found, adding it";
+        sudo sed -i 's/RECEIVER_OPTIONS=" /RECEIVER_OPTIONS="--sdr-gain 45 /' /etc/default/dump978-fa
+fi
+
 # read current gain and store in file currentgain
 # script in gain.php will read gain value stored in currentgain and
 # will display it on map as "Current Gain"
