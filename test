@@ -117,8 +117,7 @@ mkfifo -m 666 $fifo978
 # read current gain and store in file currentgain
 # script in gain.php will read gain value stored in currentgain and
 # will display it on map as "Current Gain"
-awk '{for(i=1;i<=NF;i++) if ($i=="--sdr-gain") print $(i+1)}' /etc/default/dump978-fa > /usr/local/sbin/gain978/currentgain
-
+grep -oP '(?<=--sdr-gain )[^ ]*'  /etc/default/dump978-fa  > /usr/local/sbin/gain978/currentgain
 
 while sleep 1
 do
@@ -141,9 +140,8 @@ do
         systemctl restart dump978-fa
 
         # read updated gain and store in file currentgain
-        awk '{for(i=1;i<=NF;i++) if ($i=="--sdr-gain") print $(i+1)}' /etc/default/dump978-fa > /usr/local/sbin/gain978/currentgain
-
-        # script in gain.php will read the updated gain and display it on map
+        grep -oP '(?<=--sdr-gain )[^ ]*'  /etc/default/dump978-fa  > /usr/local/sbin/gain978/currentgain
+        # script in gain.php will read the gain updated by above command and display it on map
 
 done
 
