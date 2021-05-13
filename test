@@ -24,16 +24,7 @@ echo -e "\e[32mEnabling module fastcgi-php....\e[39m"
 sudo lighty-enable-mod fastcgi-php
 sudo /etc/init.d/lighttpd force-reload
 
-echo "Adding space before lsat double quote....."
-sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
 
-echo "Check if in file /etc/default/dump978-fa, --sdr-gain is already added or not by user manually..."
-echo "If not, then add --sdr-gain 45 in RECEIVER_OPTIONS....."
-
-if [[ $(grep sdr-gain /etc/default/dump978-fa ) -eq 0 ]] ; then
-        echo "sdr-gain NOT found";
-        sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS="--sdr-gain 45 /' /etc/default/dump978-fa
-fi
 
 echo "Creating file gain.php...."
 FILE_GAIN="/usr/share/skyaware978/html/gain.php"
@@ -95,7 +86,7 @@ echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
 
-echo "Creating folder gain978...."
+echo "Creating folder gain...."
 sudo mkdir -p /usr/local/sbin/gain978
 
 echo "Creating file setgain.sh...."
@@ -126,7 +117,7 @@ mkfifo -m 666 $fifo978
 # read current gain and store in file currentgain
 # script in gain.php will read gain value stored in currentgain and
 # will display it on map as "Current Gain"
-awk '{for(i=1;i<=NF;i++) if ($i=="--gain") print $(i+1)}' /etc/default/dump978-fa > /usr/local/sbin/gain978/currentgain
+awk '{for(i=1;i<=NF;i++) if ($i=="--sdr-gain") print $(i+1)}' /etc/default/dump978-fa > /usr/local/sbin/gain978/currentgain
 
 
 while sleep 1
@@ -143,7 +134,7 @@ do
         read line < <(tr -cd  '.\-0123456789\n' < $fifo978)
 
         #set new gain
-        gainnow=`sed -n 's/.*--sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
+        gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
         
         #restart dump978-fa to implement new gain value
