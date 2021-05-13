@@ -106,9 +106,9 @@ sudo cat <<\EOT > $FILE_SETGAIN
 exec &>/usr/local/sbin/gain978/log
 
 # file that anyone can write to in order to set a new gain
-fifo=/usr/local/sbin/gain978/newgain
+fifo978=/usr/local/sbin/gain978/newgain
 
-# remove $fifo so we are sure we can create our named pipe
+# remove $fifo978 so we are sure we can create our named pipe
 rm -f $fifo978
 
 # create the named pipe with write access for everyone
