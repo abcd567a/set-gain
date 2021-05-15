@@ -29,12 +29,12 @@ sudo /etc/init.d/lighttpd force-reload
 #If parameter --sdr-gain exist, add a space after last double-quote
 
 if [[ $(grep -oe '--sdr-gain' /etc/default/dump978-fa) -eq 0 ]] ; then
-     echo "sdr-gain NOT found";
-     echo "adding sdr-gain 45";     
+     echo -e "\e[32--sdr-gain NOT found\e[39m";
+     echo -e "\e[32adding --sdr-gain 45\e[39m";     
      sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS="--sdr-gain 45 /' /etc/default/dump978-fa
 else
-     echo "sdr-gain EXISTS....";
-     echo "inserting space befor last double-quote...";
+     echo -e "\e[32--sdr-gain EXISTS....\e[39m";
+     echo -e "\e[32inserting space befor last double-quote...\e[39m";
      sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
 fi
 
@@ -146,7 +146,7 @@ do
         read line < <(tr -cd  '.\-0123456789\n' < $fifo978)
 
         #set new gain
-        gainnow=`sed -n 's/.* --sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
+        gainnow=`sed -n 's/.*--sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
         
         #restart dump978-fa to implement new gain value
