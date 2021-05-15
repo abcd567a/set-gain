@@ -39,7 +39,7 @@ else
 fi
 
 #Compressing multiple consecutive blank spaces in middle of every line to one space
-sed 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
+sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
 
 
 echo "Creating file gain.php...."
