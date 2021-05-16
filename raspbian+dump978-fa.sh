@@ -100,6 +100,16 @@ sudo cat <<\EOT > $FILE_SETGAIN
 
 #!/bin/bash
 
+#In file /etc/default/dump978-fa, check if double-quote already exists at the end of line starting with RECEIVER_OPTIONS
+#If double-quote does not exist, add it.
+
+if [[ $(grep RECEIVER /etc/default/dump978-fa | grep -o '.$') != \" ]]; then
+     echo "double-quote at end of line NOT found, adding it...";
+     sudo sed -i '/RECEIVER/ s/$/ \"/' /etc/default/dump978-fa
+else
+     echo "double-quote at the end of line found, do nothing"
+fi
+
 #Check if parameter --sdr-gain already exists or not
 #If parameter --sdr-gain does not exist, add it
 #If parameter --sdr-gain exist, add a space after last double-quote
