@@ -66,7 +66,7 @@ sudo cat <<\EOT > $FILE_GAIN
 function setgain(){
 $gain="{$_POST['gain']}";
 system("echo $gain > /usr/local/sbin/gain978/newgain");
-sleep(5);
+sleep(10);
 header("Refresh:0");
 }
 
