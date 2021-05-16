@@ -24,24 +24,6 @@ echo -e "\e[32mEnabling module fastcgi-php....\e[39m"
 sudo lighty-enable-mod fastcgi-php
 sudo /etc/init.d/lighttpd force-reload
 
-#Check if parameter --sdr-gain already exists or not
-#If parameter --sdr-gain does not exist, add it
-#If parameter --sdr-gain exist, add a space after last double-quote
-
-if [[ $(grep -oe '--sdr-gain' /etc/default/dump978-fa) -eq 0 ]] ; then
-     echo -e "\e[32--sdr-gain NOT found\e[39m";
-     echo -e "\e[32adding --sdr-gain 45\e[39m";     
-     sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS="--sdr-gain 45 /' /etc/default/dump978-fa
-else
-     echo -e "\e[32--sdr-gain EXISTS....\e[39m";
-     echo -e "\e[32inserting space befor last double-quote...\e[39m";
-     sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
-fi
-
-#In file /etc/default/dump978-fa, compress multiple consecutive blank space to one space.
-sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
-
-
 echo "Creating file gain.php...."
 FILE_GAIN="/usr/share/skyaware978/html/gain.php"
 sudo touch $FILE_GAIN
@@ -117,6 +99,23 @@ echo "Writing code to file setgain.sh...."
 sudo cat <<\EOT > $FILE_SETGAIN
 
 #!/bin/bash
+
+#Check if parameter --sdr-gain already exists or not
+#If parameter --sdr-gain does not exist, add it
+#If parameter --sdr-gain exist, add a space after last double-quote
+
+if [[ $(grep -oe '--sdr-gain' /etc/default/dump978-fa) -eq 0 ]] ; then
+     echo -e "\e[32--sdr-gain NOT found\e[39m";
+     echo -e "\e[32adding --sdr-gain 45\e[39m";     
+     sudo sed -i 's/RECEIVER_OPTIONS="/RECEIVER_OPTIONS="--sdr-gain 45 /' /etc/default/dump978-fa
+else
+     echo -e "\e[32--sdr-gain EXISTS....\e[39m";
+     echo -e "\e[32inserting space befor last double-quote...\e[39m";
+     sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
+fi
+
+#In file /etc/default/dump978-fa, compress multiple consecutive blank space to one space.
+sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
 
 # redirect all output and errors of this script to a log file
 exec &>/usr/local/sbin/gain978/log
