@@ -38,7 +38,7 @@ else
      sudo sed -i 's/\(.*\)"/\1 "/' /etc/default/dump978-fa
 fi
 
-#Compressing multiple consecutive blank spaces in middle of every line to one space
+#In file /etc/default/dump978-fa, compress multiple consecutive blank space to one space.
 sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
 
 
@@ -130,6 +130,9 @@ rm -f $fifo978
 # create the named pipe with write access for everyone
 mkfifo -m 666 $fifo978
 
+#In file /etc/default/dump978-fa, compress multiple consecutive blank spaces to one space
+sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
+
 # read current gain and store in file currentgain
 # script in gain.php will read gain value stored in currentgain and
 # will display it on map as "Current Gain"
@@ -143,15 +146,20 @@ do
         then break
         fi
 
+        #In file /etc/default/dump978-fa, compress multiple consecutive blank spaces to one space
+        sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
 
         # read one line from the named pipe, remove all characters
         # but numbers, dot, minus and newline and store it in $line
         read line < <(tr -cd  '.\-0123456789\n' < $fifo978)
 
+        #In file /etc/default/dump978-fa, compress multiple consecutive blank spaces to one space
+        sudo sed -i 's/[[:blank:]]\{1,\}/ /g'  /etc/default/dump978-fa
+
         #set new gain
         gainnow=`sed -n 's/.*--sdr-gain \([^ ]*\).*/\1/p' /etc/default/dump978-fa`
         sudo sed -i 's/--sdr-gain '$gainnow'/--sdr-gain '$line'/' /etc/default/dump978-fa
-        
+
         #restart dump978-fa to implement new gain value
         systemctl restart dump978-fa
 
