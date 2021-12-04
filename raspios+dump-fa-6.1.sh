@@ -137,6 +137,7 @@ do
         #set new gain
         gainnow=`sed -n 's/RECEIVER_GAIN=//p' /etc/default/dump1090-fa`
         sudo sed -i 's/RECEIVER_GAIN='$gainnow'/RECEIVER_GAIN='$line'/' /etc/default/dump1090-fa 
+        sudo sed -i '/ADAPTIVE_DYNAMIC_RANGE=/c\ADAPTIVE_DYNAMIC_RANGE=no'  /etc/default/dump1090-fa
         
         #restart dump1090-fa to implement new gain value
         systemctl restart dump1090-fa
