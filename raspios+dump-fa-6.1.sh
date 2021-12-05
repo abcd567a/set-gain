@@ -118,7 +118,7 @@ mkfifo -m 666 $fifo
 # read current gain and store in file currentgain
 # script in gain.php will read gain value stored in currentgain and
 # will display it on map as "Current Gain"
-awk '{for(i=1;i<=NF;i++) if ($i=="--gain") print $(i+1)}' /etc/default/dump1090-fa > /usr/local/sbin/gain/currentgain
+grep "RECEIVER_GAIN=" /etc/default/dump1090-fa | sed 's/^.*=//' > /usr/local/sbin/gain/currentgain
 
 
 while sleep 1
