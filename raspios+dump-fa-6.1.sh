@@ -157,26 +157,18 @@ echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
 
 echo ""
-echo ""
-echo "FILE & FOLDER CREATION COMPLETED"
-echo "FOLLOWING FILES ARE READY"
-echo ""
-echo $FILE_GAIN
-echo $FILE_SETGAIN
-echo ""
-echo ""
-echo "Adding entry in crontab to run setgain.sh at boot."
+echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
 commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
 (crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
-
-echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
-echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
-echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
-echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
-
-echo -e "\e[32m(1) After REBOOT, in browser go to 'IP-of-Pi/skyaware/gain.php' \e[39m"
 echo ""
-echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
+echo -e "\e[32mStarting Set Gain add-on \e[39m"
+/bin/bash /usr/local/sbin/gain/setgain.sh &
+echo -e "\e[32m======================================= \e[39m"
+echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
+echo -e "\e[32m======================================= \e[39m"
+
+echo -e "\e[95m(1) In browser go to 'IP-of-Pi/skyaware/gain.php'. Reload browser \e[39m"
+echo -e "\e[95m(2) OPTIONAL STEP: \e[32mEmbed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
 echo ""
 echo "    cd /usr/share/skyaware/html  "
@@ -193,4 +185,7 @@ echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '    </div> <!----- GAIN --->'
 echo ""
-echo -e "\e[32m(2.3) Save & Close file. Go to 'IP-of-Pi/skyaware/' \e[39m"
+echo -e "\e[95m(2.3) Save & Close file. Go to 'IP-of-Pi/skyaware/' \e[39m"
+echo ""
+
+
