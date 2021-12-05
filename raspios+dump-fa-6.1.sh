@@ -168,11 +168,13 @@ echo ""
 echo "Adding entry in crontab to run setgain.sh at boot."
 commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
 (crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
+
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
-echo -e "\e[31mREBOOT Pi to start the Set Gain add-on \e[39m"
-echo -e "\e[31mREBOOT Pi to start the Set Gain add-on \e[39m"
-echo -e "\e[31mREBOOT Pi to start the Set Gain add-on \e[39m"
-echo -e "\e[32m(1) After reboot, in browser go to 'IP-of-Pi/skyaware/gain.php' \e[39m"
+echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
+echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
+echo -e "\e[31mREBOOT Pi \e[95mREBOOT Pi \e[96mREBOOT Pi \e[39m"
+
+echo -e "\e[32m(1) After REBOOT, in browser go to 'IP-of-Pi/skyaware/gain.php' \e[39m"
 echo ""
 echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
