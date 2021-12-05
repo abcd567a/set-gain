@@ -173,7 +173,7 @@ echo "=========================================="
 echo "PLEASE DO FOLLOWING:"
 echo "=========================================="
 echo "(1) After script finishes installation, Reboot Pi to start the Set Gain add-on"
-echo "(2) In your browser go to address 'IP-of-Pi/skyaware/gain.php' to see the Set Gain button & dropdown "
+echo "(2) In browser go to 'IP-of-Pi/skyaware/gain.php' & see the Set Gain add-on"
 echo "(3) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map.."
 echo "(3.1) Make a backup copy of file index.html by following commands..."
 echo ""
@@ -191,7 +191,4 @@ echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '    </div> <!----- GAIN --->'
 echo ""
-echo "(3.3) After completing steps (3.1), (3.2) and (3.3), "
-echo "    (a) Reboot RPi "
-echo "    (b) After reboot, go to 'IP-of-Pi/skyaware/'. Clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5)"
-echo ""
+echo "(3.3) Reboot RPi, and after reboot go to 'IP-of-Pi/skyaware/'"
