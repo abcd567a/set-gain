@@ -171,19 +171,19 @@ echo -e "\e[95m(1) In browser go to 'IP-of-Pi/skyaware/gain.php'. Reload browser
 echo -e "\e[95m(2) OPTIONAL STEP: \e[32mEmbed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
 echo ""
-echo "    cd /usr/share/skyaware/html  "
-echo "    sudo cp index.html index.html.orig "
+echo "  cd /usr/share/skyaware/html  "
+echo "  sudo cp index.html index.html.orig "
 echo ""
 echo "(2.2) Open file index.html for editing "
-echo "    sudo nano /usr/share/skyaware/html/index.html "
+echo "  sudo nano /usr/share/skyaware/html/index.html "
 echo ""
-echo "    Press Ctrl+W and type "buttonContainer" and press Enter key "
-echo '    the cursor will jump to <div class="buttonContainer">'
-echo '    add following 3 lines of code just above line <div class="buttonContainer">'
+echo "  Press Ctrl+W and type "buttonContainer" and press Enter key "
+echo '  the cursor will jump to <div class="buttonContainer">'
+echo '  add following 3 lines of code just above line <div class="buttonContainer">'
 echo ""
-echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
-echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
-echo '    </div> <!----- GAIN --->'
+echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
+echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
+echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "\e[95m(2.3) Save & Close file. Go to 'IP-of-Pi/skyaware/' \e[39m"
 echo ""
