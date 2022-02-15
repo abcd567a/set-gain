@@ -26,6 +26,14 @@ elif [[ ${CODENAME} == "buster" ]];
  echo ""
  echo " Installing php7.3-cgi....";
  sudo apt install -y php7.3-cgi;
+
+elif [[ ${CODENAME} == "bullseye" ]];
+ then
+ echo "Detected" ${CODENAME}"....";
+ echo ""
+ echo " Installing php7.4-cgi....";
+ sudo apt install -y php7.4-cgi;
+
 fi
 
 echo "Enabling module fastcgi-php...."
