@@ -199,13 +199,13 @@ echo "  sudo nano /usr/share/skyaware/html/index.html "
 echo ""
 echo "  Press Ctrl+W and type "buttonContainer" and press Enter key "
 echo '  the cursor will jump to <div class="buttonContainer">'
-echo '  add following 3 lines of code just above line <div class="buttonContainer">'
+echo -e '  add following 3 lines of code \e[95mJUST ABOVE\e[39m the line \e[32m<div class="buttonContainer"> \e[39m'
 echo ""
 echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
-echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser \e[39m"
-echo "   (2.5) Use sudo systemctl restart | stop | status set-gain"
+echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser (Ctrl+F5) \e[39m"
+echo "(2.5) Use sudo systemctl restart | stop | status set-gain"
 
