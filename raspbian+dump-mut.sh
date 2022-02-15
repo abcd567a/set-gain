@@ -3,38 +3,22 @@
 echo "Updating apt......"
 sudo apt update
 
-echo ""
-echo "Checking Distro Version ....."
-CODENAME=`lsb_release -sc`
-if [[ ${CODENAME} == "jessie" ]];
- then
- echo "Detected" ${CODENAME}".... ";
- echo "";
- echo "Installing php5-cgi....";
- sudo apt install -y php5-cgi;
+echo -e "\e[32mInstalling php-cgi....\e[39m"
+sudo apt install -y php-cgi
 
-elif [[ ${CODENAME} == "stretch" ]];
- then
- echo "Detected" ${CODENAME}"....";
- echo ""
- echo " Installing php7.0-cgi....";
- sudo apt install -y php7.0-cgi;
-
-elif [[ ${CODENAME} == "buster" ]];
- then
- echo "Detected" ${CODENAME}"....";
- echo ""
- echo " Installing php7.3-cgi....";
- sudo apt install -y php7.3-cgi;
-
-elif [[ ${CODENAME} == "bullseye" ]];
- then
- echo "Detected" ${CODENAME}"....";
- echo ""
- echo " Installing php7.4-cgi....";
- sudo apt install -y php7.4-cgi;
-
+# Before enabling module fastcgi-php, detect if package php-cgi is installed, 
+# and if not, advise user to install it manually and exit script 
+if [[ $(dpkg-query -W -f='${STATUS}' php-cgi 2>/dev/null | grep -c "ok installed") -eq 0 ]] ; then
+  echo -e ""
+  echo -e "\e[91m\e[5mINSTALLATION HALTED!\e[25m"
+  echo -e "UNABLE TO INSTALL PACKAGE PHP-CGI."
+  echo -e "SETUP HAS BEEN TERMINATED!"
+  echo -e ""
+  echo -e "\e[93mPlease install package php-cgi manually, then run this script again.\e[39m"
+  echo -e ""
+  exit 1
 fi
+
 
 echo "Enabling module fastcgi-php...."
 sudo lighty-enable-mod fastcgi-php
