@@ -167,8 +167,9 @@ echo -e "\e[32m======================================= \e[39m"
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
 echo -e "\e[32m======================================= \e[39m"
 
-echo -e "\e[95m(1) In browser go to 'IP-of-Pi/skyaware/gain.php'. Reload browser \e[39m"
-echo -e "\e[95m(2) OPTIONAL STEP: \e[32mEmbed Set Gain Button & Dropdown in Skyaware Map \e[39m"
+echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/gain.php \e[39m"
+
+echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
 echo ""
 echo "  cd /usr/share/skyaware/html  "
@@ -185,7 +186,7 @@ echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '  </div> <!----- GAIN --->'
 echo ""
-echo -e "\e[95m(2.3) Save & Close file. Go to 'IP-of-Pi/skyaware/' \e[39m"
-echo ""
+echo -e "(2.3) Save & Close file.  "
+echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser \e[39m"
 
 
