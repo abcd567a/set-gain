@@ -164,43 +164,58 @@ echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
 
 
+echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
+SERVICE_FILE=/lib/systemd/system/set-gain.service
+sudo touch $SERVICE_FILE
+sudo chmod 666 $SERVICE_FILE
+sudo cat <<\EOT > $SERVICE_FILE
+[Unit]
+Description=Set Gain from Browser/Skyaware Map - By: abcd567
+
+[Service]
+ExecStart=/bin/bash /usr/local/sbin/gain/setgain.sh
+Type=simple
+Restart=on-failure
+RestartSec=30
+RestartPreventExitStatus=64
+Nice=-5
+[Install]
+WantedBy=default.target
+EOT
+
+sudo chmod 644 $SERVICE_FILE
 echo ""
+
+echo -e "\e[32mStarting Set Gain add-on \e[39m"
+sudo systemctl enable set-gain
+sudo systemctl start set-gain
+
+
+
+echo -e "\e[32m======================================= \e[39m"
+echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
+echo -e "\e[32m======================================= \e[39m"
+
+echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/gain.php \e[39m"
+
+echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
+echo "(2.1) Make a backup copy of file index.html by following commands..."
 echo ""
-echo "FILE & FOLDER CREATION COMPLETED"
-echo "FOLLOWING FILES ARE READY"
+echo "  cd /usr/share/skyaware/html  "
+echo "  sudo cp index.html index.html.orig "
 echo ""
-echo $FILE_GAIN
-echo $FILE_SETGAIN
+echo "(2.2) Open file index.html for editing "
+echo "  sudo nano /usr/share/skyaware/html/index.html "
 echo ""
+echo "  Press Ctrl+W and type "buttonContainer" and press Enter key "
+echo '  the cursor will jump to <div class="buttonContainer">'
+echo '  add following 3 lines of code just above line <div class="buttonContainer">'
 echo ""
-echo "===================="
-echo "PLEASE DO FOLLOWING:"
-echo "===================="
-echo "(1) Add entry in crontab to run setgain.sh at boot."
-echo "    Give command sudo crontab -e "
-echo "    Scroll down and at bottom add following line"
+echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
+echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
+echo '  </div> <!----- GAIN --->'
 echo ""
-echo "    @reboot /bin/bash /usr/local/sbin/gain/setgain.sh "
-echo ""
-echo "(2) After completing above step, Reboot Pi to start setgain script"
-echo ""
-echo "(3) Make a backup copy of file index.html by following commands..."
-echo ""
-echo "    cd /usr/share/dump1090-fa/html  "
-echo "    sudo cp index.html index.html.orig "
-echo ""
-echo "(4) Open file index.html for editing "
-echo "    sudo nano /usr/share/dump1090-fa/html/index.html "
-echo ""
-echo "    Press Ctrl+W and type "buttonContainer" and press Enter key "
-echo '    the cursor will jump to <div class="buttonContainer">'
-echo '    add following 3 lines of code just above line <div class="buttonContainer">'
-echo ""
-echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
-echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
-echo '    </div> <!----- GAIN --->'
-echo ""
-echo "(5) After completing steps (3) and (4), "
-echo "    (a) Reboot RPi "
-echo "    (b) After reboot, clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5)"
-echo ""
+echo -e "(2.3) Save & Close file.  "
+echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser \e[39m"
+echo "   (2.5) Use sudo systemctl restart | stop | status set-gain"
+
