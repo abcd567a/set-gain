@@ -172,25 +172,17 @@ sudo chmod 644 $FILE_SETGAIN
 
 
 echo ""
+echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
+commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
+(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
 echo ""
-echo "FILE & FOLDER CREATION COMPLETED"
-echo "FOLLOWING FILES ARE READY"
-echo ""
-echo $FILE_GAIN
-echo $FILE_SETGAIN
-echo ""
-echo ""
+echo -e "\e[32mStarting Set Gain add-on \e[39m"
+/bin/bash /usr/local/sbin/gain/setgain.sh &
 echo "=========================================="
 echo "PLEASE DO FOLLOWING:"
 echo "=========================================="
-echo "(1) Add entry in crontab to run setgain.sh at boot."
-echo "    Give command:  sudo crontab -e "
-echo "    In file opened, scroll down and at bottom add following line"
-echo ""
-echo "    @reboot /bin/bash /usr/local/sbin/gain/setgain.sh "
-echo ""
-echo "(2) After completing above step, Reboot Pi to start setgain script"
-echo ""
+echo -e "\e[95m(1) In browser go to 'IP-of-Pi/dump1090/gain.php'. Reload browser \e[39m"
+echo -e "\e[95m(2) OPTIONAL STEP: \e[32mEmbed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(3) Make a backup copy of file gmap.html by following commands..."
 echo ""
 echo "    cd /usr/share/dump1090-mutability/html  "
