@@ -206,7 +206,7 @@ echo "      sudo nano /usr/share/dump1090-mutability/html/gmap.html "
 echo ""
 echo "Press Ctrl+W and type  sudo_buttons  and press Enter key "
 echo 'the cursor will jump to <div id="sudo_buttons">'
-echo -e 'Insert following 3 lines \e[95mJUST ABOVE\e[39m line \e[32m<div id="sudo_buttons"> \e[39m'
+echo -e '\e[95mInsert\e[39m following 3 lines \e[95mJUST ABOVE\e[39m line \e[32m<div id="sudo_buttons"> \e[39m'
 echo ""
 echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
