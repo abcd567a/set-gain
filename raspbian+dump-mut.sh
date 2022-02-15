@@ -194,23 +194,24 @@ echo "=========================================="
 
 echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gain.php \e[39m"
 
-echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in GMap \e[39m"
+echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Gmap \e[39m"
 echo "(2.1) Make a backup copy of file gmap.html by following commands:"
 echo ""
-echo "    cd /usr/share/dump1090-mutability/html  "
-echo "    sudo cp gmap.html gmap.html.orig "
+echo "      cd /usr/share/dump1090-mutability/html  "
+echo "      sudo cp gmap.html gmap.html.orig "
 echo ""
 echo "(2.2) Open file gmap.html for editing "
-echo "    sudo nano /usr/share/dump1090-mutability/html/gmap.html "
 echo ""
-echo "    Press Ctrl+W and type  sudo_buttons  and press Enter key "
-echo '    the cursor will jump to <div id="sudo_buttons">'
-echo -e '    Insert following 3 lines of code \e[95mJUST ABOVE\e[39m line \e[32m<div id="sudo_buttons"> \e[39m'
+echo "      sudo nano /usr/share/dump1090-mutability/html/gmap.html "
+echo ""
+echo "Press Ctrl+W and type  sudo_buttons  and press Enter key "
+echo 'the cursor will jump to <div id="sudo_buttons">'
+echo -e 'Insert following 3 lines \e[95mJUST ABOVE\e[39m line \e[32m<div id="sudo_buttons"> \e[39m'
 echo ""
 echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '    </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
-echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[39m"
+echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/ \e[39m"
 echo -e "\e[32m(2.5) Clear Browser cache (Ctrl+Shift+Delete) & Reload browser (Ctrl+F5) \e[39m"
