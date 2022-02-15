@@ -165,14 +165,17 @@ echo -e "\e[32mStarting Set Gain add-on \e[39m"
 echo "=========================================="
 echo "PLEASE DO FOLLOWING:"
 echo "=========================================="
-echo -e "\e[95m(1) In browser go to 'IP-of-Pi/dump1090/gain.php'. Reload browser \e[39m"
-echo -e "\e[95m(2) OPTIONAL STEP: \e[32mEmbed Set Gain Button & Dropdown in Skyaware Map \e[39m"
-echo "(3) Make a backup copy of file gmap.html by following commands..."
+
+echo -e "\e[95m(1) In your browser, go to web interface at\e[39m"
+echo -e "\e[95m     http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gain.php \e[39m"
+
+echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in GMap \e[39m"
+echo "(2.1) Make a backup copy of file gmap.html by following commands:"
 echo ""
 echo "    cd /usr/share/dump1090-mutability/html  "
 echo "    sudo cp gmap.html gmap.html.orig "
 echo ""
-echo "(4) Open file gmap.html for editing "
+echo "(2.2) Open file gmap.html for editing "
 echo "    sudo nano /usr/share/dump1090-mutability/html/gmap.html "
 echo ""
 echo "    Press Ctrl+W and type  sudo_buttons  and press Enter key "
@@ -183,8 +186,9 @@ echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '    </div> <!----- GAIN --->'
 echo ""
-echo "(5) After completing steps (3) and (4), "
+echo "(2.3) After completing above steps, "
 echo "    (a) Reboot RPi "
-echo "    (b) After reboot, clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5)"
-echo ""
+echo "    (b) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gmap.html "
+echo "    (c) Clear browser cache and Reload Browser"
+
 
