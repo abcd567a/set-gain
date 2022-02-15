@@ -157,6 +157,9 @@ sudo chmod 644 $FILE_SETGAIN
 echo "Creating User setgain to run set-gain"
 sudo useradd --system setgain
 
+echo "Assigning ownership of gain folder to user setgain"
+sudo chown setgain:setgain -R /usr/local/sbin/gain
+
 echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
 SERVICE_FILE=/lib/systemd/system/set-gain.service
 sudo touch $SERVICE_FILE
