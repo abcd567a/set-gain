@@ -10,24 +10,24 @@
 **For Raspbian image with dump1090-mutability**</br>
 `sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/set-gain/master/raspbian+dump-mut.sh)" `
 </br></br>
-### (B) After running above script, do following:
+### (B) After running above script, the gain add on is available in browser as follows: </br>
+**In dump1090-fa** at IP-of-Pi/skyaware/gain.php </br>
+**In dump1090-mutability** at IP-of-Pi/dump1090/gain.php </br>
 
-**(1) Add entry in crontab to run setgain.sh at boot as follows:** </br>
-&nbsp; &nbsp; &nbsp; (a) Give command:  `sudo crontab -e ` </br>
-&nbsp; &nbsp; &nbsp; (b) In file opened, scroll down and at bottom add following line </br>
-&nbsp; &nbsp; &nbsp; `@reboot /bin/bash /usr/local/sbin/gain/setgain.sh `
+TThe set-gain app is started automatically at boot. It can also be started.stopped/status by following commands: </br>
+`sudo systemctl status set-gain ` </br>
+`sudo systemctl restart set-gain ` </br>
+`sudo systemctl stop set-gain ` </br>
 
-**(2) After completing above step, Reboot Pi to start setgain script** </br>
-
-**(3) Embedd "Set Gain" button into Skyview Map / Gmap** </br>
+**(C) OPTIONAL: Embedd "Set Gain" button into Skyview Map / Gmap** </br>
 <details close>
 <summary>dump1090-fa (click to expand)</summary>
 </br>
-3.1 - Make a backup copy of file index.html by following commands...</br>
+3.1 - Make a backup copy of file index.html by following commands:</br>
 
 
 ```
-cd /usr/share/dump1090-fa/html 
+cd /usr/share/skyaware/html 
 sudo cp index.html index.html.orig 
 # Check backup is created
 ls index* 
@@ -38,7 +38,7 @@ index.html  index.html.orig
 </br>
 
 3.2 - Open file index.html for editing </br>
-    `sudo nano /usr/share/dump1090-fa/html/index.html ` </br>
+    `sudo nano /usr/share/skyaware/html/index.html ` </br>
  </br>
  Press Ctrl+W and type buttonContainer and press Enter key </br>
  the cursor will jump to `<div class="buttonContainer">` </br>
@@ -58,7 +58,7 @@ index.html  index.html.orig
  <details close>
 <summary>dump1090-mutability (click to expand)</summary>
 </br>
-3.1 - Make a backup copy of file gmap.html by following commands... </br>
+3.1 - Make a backup copy of file gmap.html by following commands: </br>
 
 ```
 cd /usr/share/dump1090-mutability/html
