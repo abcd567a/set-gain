@@ -154,6 +154,8 @@ echo "code written to file setgain.sh...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
 
+echo "Creating User setgain to run set-gain"
+sudo useradd --system setgain
 
 echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
 SERVICE_FILE=/lib/systemd/system/set-gain.service
@@ -164,6 +166,7 @@ sudo cat <<\EOT > $SERVICE_FILE
 Description=Set Gain from Browser/Skyaware Map - By: abcd567
 
 [Service]
+User=setgain
 ExecStart=/bin/bash /usr/local/sbin/gain/setgain.sh
 Type=simple
 Restart=on-failure
