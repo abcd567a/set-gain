@@ -217,5 +217,5 @@ echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
 echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser \e[39m"
-
+echo "   (2.5) Use sudo systemctl restart | stop | status set-gain"
 
