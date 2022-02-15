@@ -154,14 +154,40 @@ echo "code written to file setgain.sh...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
 
+#echo ""
+#echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
+#commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
+#(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
+#echo ""
+#echo -e "\e[32mStarting Set Gain add-on \e[39m"
+#/bin/bash /usr/local/sbin/gain/setgain.sh &
 
+echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
+SERVICE_FILE=/lib/systemd/system/set-gain.service
+sudo touch $SERVICE_FILE
+sudo chmod 666 $SERVICE_FILE
+sudo cat <<\EOT > $SERVICE_FILE
+[Unit]
+Description=set-gain by abcd567
+
+[Service]
+ExecStart=/bin/bash /usr/local/sbin/gain/setgain.sh
+Type=simple
+Restart=on-failure
+RestartSec=30
+RestartPreventExitStatus=64
+Nice=-5
+[Install]
+WantedBy=default.target
+EOT
+
+sudo chmod 644 $SERVICE_FILE
 echo ""
-echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
-commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
-(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
-echo ""
+
 echo -e "\e[32mStarting Set Gain add-on \e[39m"
-/bin/bash /usr/local/sbin/gain/setgain.sh &
+sudo systemctl enable set-gain
+sudo systemctl start set-gain
+
 echo "=========================================="
 echo "PLEASE DO FOLLOWING:"
 echo "=========================================="
@@ -187,8 +213,7 @@ echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></ifram
 echo '    </div> <!----- GAIN --->'
 echo ""
 echo "(2.3) After completing above steps, "
-echo "    (a) Reboot RPi "
 echo "    (b) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gmap.html "
 echo "    (c) Clear browser cache and Reload Browser"
-
+echo "    (c) Use sudo systemctl restart | stop | status set-gain"
 
