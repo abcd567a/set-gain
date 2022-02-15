@@ -190,8 +190,6 @@ echo -e "\e[32mStarting Set Gain add-on \e[39m"
 sudo systemctl enable set-gain
 sudo systemctl start set-gain
 
-
-
 echo -e "\e[32m======================================= \e[39m"
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
 echo -e "\e[32m======================================= \e[39m"
@@ -201,21 +199,21 @@ echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'sr
 echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
 echo ""
-echo "  cd /usr/share/skyaware/html  "
-echo "  sudo cp index.html index.html.orig "
+echo "      cd /usr/share/skyaware/html  "
+echo "      sudo cp index.html index.html.orig "
 echo ""
 echo "(2.2) Open file index.html for editing "
-echo "  sudo nano /usr/share/skyaware/html/index.html "
 echo ""
-echo "  Press Ctrl+W and type "buttonContainer" and press Enter key "
-echo '  the cursor will jump to <div class="buttonContainer">'
-echo '  add following 3 lines of code just above line <div class="buttonContainer">'
+echo "      sudo nano /usr/share/skyaware/html/index.html "
+echo ""
+echo "Press Ctrl+W and type "buttonContainer" and press Enter key "
+echo 'the cursor will jump to <div class="buttonContainer">'
+echo -e '\e[95mInsert\e[39m following 3 lines \e[95mJUST ABOVE\e[39m the line \e[32m<div class="buttonContainer"> \e[39m'
 echo ""
 echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
 echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
-echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[32mand Reload browser \e[39m"
-echo "   (2.5) Use sudo systemctl restart | stop | status set-gain"
-
+echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[39m"
+echo -e "\e[32m(2.5) Clear Browser cache (Ctrl+Shift+Delete) & Reload browser (Ctrl+F5) \e[39m"
