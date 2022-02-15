@@ -28,7 +28,7 @@ sudo /etc/init.d/lighttpd force-reload
 
 
 echo "Creating file gain.php...."
-FILE_GAIN="/usr/share/dump1090-fa/html/gain.php"
+FILE_GAIN="/usr/share/skyaware/html/gain.php"
 sudo touch $FILE_GAIN
 
 echo "making file gain.php writeable by script (666)...."
