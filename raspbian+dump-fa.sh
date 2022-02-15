@@ -156,13 +156,42 @@ echo "code written to file setgain.sh...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
 
+#echo ""
+#echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
+#commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
+#(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
+#echo ""
+#echo -e "\e[32mStarting Set Gain add-on \e[39m"
+#/bin/bash /usr/local/sbin/gain/setgain.sh &
+
+echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
+SERVICE_FILE=/lib/systemd/system/set-gain.service
+sudo touch $SERVICE_FILE
+sudo chmod 666 $SERVICE_FILE
+sudo cat <<\EOT > $SERVICE_FILE
+[Unit]
+Description=Set Gain from Browser/Skyaware Map - By: abcd567
+
+[Service]
+ExecStart=/bin/bash /usr/local/sbin/gain/setgain.sh
+Type=simple
+Restart=on-failure
+RestartSec=30
+RestartPreventExitStatus=64
+Nice=-5
+[Install]
+WantedBy=default.target
+EOT
+
+sudo chmod 644 $SERVICE_FILE
 echo ""
-echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
-commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
-(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
-echo ""
+
 echo -e "\e[32mStarting Set Gain add-on \e[39m"
-/bin/bash /usr/local/sbin/gain/setgain.sh &
+sudo systemctl enable set-gain
+sudo systemctl start set-gain
+
+
+
 echo -e "\e[32m======================================= \e[39m"
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
 echo -e "\e[32m======================================= \e[39m"
