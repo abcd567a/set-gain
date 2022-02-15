@@ -168,7 +168,7 @@ sudo touch $SERVICE_FILE
 sudo chmod 666 $SERVICE_FILE
 sudo cat <<\EOT > $SERVICE_FILE
 [Unit]
-Description=set-gain by abcd567
+Description=Set Gain from Browser/Gmap - By: abcd567
 
 [Service]
 ExecStart=/bin/bash /usr/local/sbin/gain/setgain.sh
