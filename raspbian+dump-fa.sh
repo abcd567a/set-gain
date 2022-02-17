@@ -136,13 +136,13 @@ do
         gainnow=`sed -n 's/RECEIVER_GAIN=//p' /etc/default/dump1090-fa`
         sed -i 's/RECEIVER_GAIN='$gainnow'/RECEIVER_GAIN='$line'/' /etc/default/dump1090-fa 
         sed -i '/ADAPTIVE_DYNAMIC_RANGE=/c\ADAPTIVE_DYNAMIC_RANGE=no'  /etc/default/dump1090-fa
-        
+
         #restart dump1090-fa to implement new gain value
         systemctl restart dump1090-fa
 
         # read updated gain and store in file currentgain
         grep "RECEIVER_GAIN=" /etc/default/dump1090-fa | sed 's/^.*=//' > /usr/local/sbin/gain/currentgain
-        
+
         # script in gain.php will read the updated gain and display it on map
 done
 
