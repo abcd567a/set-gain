@@ -124,11 +124,9 @@ grep "RECEIVER_GAIN=" /etc/default/dump1090-fa | sed 's/^.*=//' > /usr/local/sbi
 while sleep 1
 do
         if ! [[ -r $fifo ]] || ! [[ -p $fifo ]]
-
         # exit the loop/script if $fifo is not readable or not a named pipe
         then break
         fi
-
 
         # read one line from the named pipe, remove all characters
         # but numbers, dot, minus and newline and store it in $line
@@ -146,23 +144,13 @@ do
         grep "RECEIVER_GAIN=" /etc/default/dump1090-fa | sed 's/^.*=//' > /usr/local/sbin/gain/currentgain
         
         # script in gain.php will read the updated gain and display it on map
-
 done
-
 
 EOT
 
 echo "code written to file setgain.sh...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_SETGAIN
-
-#echo ""
-#echo -e "\e[32mAdding entry in crontab to run setgain.sh at boot. \e[39m"
-#commandline=" @reboot /bin/bash /usr/local/sbin/gain/setgain.sh"
-#(crontab -u $(whoami) -l; echo "$commandline" ) | crontab -u $(whoami) -
-#echo ""
-#echo -e "\e[32mStarting Set Gain add-on \e[39m"
-#/bin/bash /usr/local/sbin/gain/setgain.sh &
 
 echo -e "\e[33m(1) Creating set-gain service file......\e[39m"
 SERVICE_FILE=/lib/systemd/system/set-gain.service
