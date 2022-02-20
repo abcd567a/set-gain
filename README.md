@@ -42,7 +42,7 @@ index.html  index.html.orig
  </br>
  Press Ctrl+W and type buttonContainer and press Enter key </br>
  the cursor will jump to `<div class="buttonContainer">` </br>
- add following 3 lines of code just above line `<div class="buttonContainer">` </br>
+ **Insert** following 3 lines of code **just ABOVE** the line `<div class="buttonContainer">` </br>
  </br>
  ```
 <div id="GAIN" style="text-align:center;width:175px;height:65px;">
@@ -50,9 +50,10 @@ index.html  index.html.orig
 </div> <!----- GAIN --->
 ```
 </br>
-3 - After completing steps 3.1 and 3.2, </br>
-    (a) Reboot RPi </br>
-    (b) After reboot, clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5) </br>
+3 - After completing above steps</br>
+    (a) Save file (Ctrl+O) and close (ctrl+x)  </br>
+    (b) Clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5) </br>
+
 </details>
 
  <details close>
@@ -76,7 +77,7 @@ gmap.html  gmap.html.orig
  </br>
  Press Ctrl+W and type sudo_buttons and press Enter key </br>
  the cursor will jump to `<div class="sudo_buttons">` </br>
- add following 3 lines of code just above line `<div class="sudo_buttons">` </br>
+ **Insert** following 3 lines of code **just ABOVE** the line `<div class="sudo_buttons">` </br>
  </br>
  ```
 <div id="GAIN" style="text-align:center;width:175px;height:65px;">
@@ -84,9 +85,9 @@ gmap.html  gmap.html.orig
 </div> <!----- GAIN --->
 ```
 </br>
-3 - After completing steps 3.1 and 3.2, </br>
-    (a) Reboot RPi </br>
-    (b) After reboot, clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5) </br>
+3 - After completing above steps</br>
+    (a) Save file (Ctrl+O) and close (ctrl+x)  </br>
+    (b) Clear browser cache (Ctrl+Shift+Delete) and Reload Browser (Ctrl+F5) </br>
 
 </details>
 
