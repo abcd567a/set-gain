@@ -137,6 +137,7 @@ do
 
         #set new gain
         piaware-config rtlsdr-gain "$line"
+        piaware-config adaptive-dynamic-range no
 
         #restart dump1090-fa to implement new gain value
         systemctl restart dump1090-fa
