@@ -91,4 +91,132 @@ gmap.html  gmap.html.orig
 
 </details>
 
+</br>
+</br>
+
+
+## To Uninstall
+<details close>
+<summary>dump1090-fa (click to expand)</summary>
+</br>
+
+```
+sudo systemctl stop set-gain  
+sudo systemctl disable set-gain  
+sudo rm /usr/lib/systemd/system/set-gain.service  
+sudo rm /usr/share/skyaware/html/gain.php  
+sudo rm -rf /usr/local/sbin/gain  
+sudo lighty-disable-mod fastcgi-php  
+sudo service lighttpd force-reload  
+
+## Reboot Pi
+sudo reboot
+
+```
+
+### To remove embedded gain button from Skyaware Map
+
+![image](https://user-images.githubusercontent.com/28452511/160162763-512d0a9f-e50f-4350-9fbd-5d63c4153312.png)
+
+
+If you have embeded gain button in Skyaware Map by modifying file `index.html` in folder `/usr/share/skyaware/html/` then it is easy to remove it.
+
+**CASE-1: If you followed installation instructions and have created a backup copy `index.html.orig` before starting modifications:**
+
+Copy backup file `index.html.orig` over modified file `index.html` by following commands:
+
+```
+cd /usr/share/skyaware/html/ 
+sudo cp index.html.orig index.html   
+
+## Reload Browser (Ctrl+F5)
+
+```
+
+**CASE-2: If you did not create a backup of file `index.html` before modifying it.**
+
+Delete the 3 lines of code you have added to file index.html by following method:
+
+(1) Open file index.html for editing
+
+```
+sudo nano /usr/share/skyaware/html/index.html
+```
+
+(2) Press Ctrl+W and type `buttonContainer` and press Enter key.
+The cursor will jump to `<div class="buttonContainer">`
+Delete following 3 lines of code you have added just above line `<div class="buttonContainer">`
+
+```
+    <div id="GAIN" style="text-align:center;width:175px;height:65px;">
+    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>
+    </div> <!----- GAIN --->
+```
+
+(3) Save & Close file `index.html` . Go to Skyaware Map and Reload browser (Ctrl+F5).
+
+</details>
+
+<details close>
+
+<summary>dump1090-mutability (click to expand)</summary>
+</br>
+
+```
+sudo systemctl stop set-gain  
+sudo systemctl disable set-gain  
+sudo rm /usr/lib/systemd/system/set-gain.service  
+sudo rm /usr/share/dump1090-mutability/html/gain.php  
+sudo rm -rf /usr/local/sbin/gain  
+sudo lighty-disable-mod fastcgi-php  
+sudo service lighttpd force-reload  
+
+## Reboot Pi
+sudo reboot
+
+```
+
+### To remove embedded gain button from GMap
+
+
+
+If you have embeded gain button in GMap by modifying file `gmap.html` in folder `/usr/share/dump1090-mutability/html/` then it is easy to remove it.
+
+**CASE-1: If you followed installation instructions and have created a backup copy `index.html.orig` before starting modifications:**
+
+Copy backup file `gmap.html.orig` over modified file `gmap.html` by following commands:
+
+```
+cd /usr/share/dump1090-mutability/html/ 
+sudo cp gmap.html.orig gmap.html   
+
+## Reload Browser (Ctrl+F5)
+
+```
+
+**CASE-2: If you did not create a backup of file `gmap.html` before modifying it.**
+
+Delete the 3 lines of code you have added to file gmap.html by following method:
+
+(1) Open file gmap.html for editing
+
+```
+sudo nano /usr/share/dump1090-mutability/html/gmap.html
+```
+
+(2) Press Ctrl+W and type `sudo_buttons` and press Enter key.
+The cursor will jump to `<div id="sudo_buttons">`
+Delete following 3 lines of code you have added just above line `<div id="sudo_buttons">`
+
+```
+    <div id="GAIN" style="text-align:center;width:175px;height:65px;">
+    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>
+    </div> <!----- GAIN --->
+```
+
+(3) Save & Close file `gmap.html` . Go to GMap and Reload browser (Ctrl+F5).
+
+</br>
+</br>
+
 
