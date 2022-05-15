@@ -1,5 +1,5 @@
 ## Read and Set Gain from maps of dump1090-fa / dump1090-mutability
-|  |  |  |
+| dump1090-fa |  | dump1090-mutability |
 |---|-|---|
 | ![image](https://user-images.githubusercontent.com/28452511/160162763-512d0a9f-e50f-4350-9fbd-5d63c4153312.png)| |![image](https://user-images.githubusercontent.com/28452511/160232377-4aa9f42f-e354-4474-9446-d4ea3588a59d.png)  |
 
