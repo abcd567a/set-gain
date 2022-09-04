@@ -21,7 +21,7 @@
 **In dump1090-fa** at IP-of-Pi/skyaware/gain.php </br>
 **In dump1090-mutability** at IP-of-Pi/dump1090/gain.php </br>
 
-TThe set-gain app is started automatically at boot. It can also be started.stopped/status by following commands: </br>
+The set-gain app is started automatically at boot. It can also be started.stopped/status by following commands: </br>
 `sudo systemctl status set-gain ` </br>
 `sudo systemctl restart set-gain ` </br>
 `sudo systemctl stop set-gain ` </br>
@@ -53,7 +53,7 @@ index.html  index.html.orig
  </br>
  ```
 <div id="GAIN" style="text-align:center;width:175px;height:65px;">
-<iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>
+<iframe src=../../gain.php style="border:0;width:175px;height:65px;"></iframe>
 </div> <!----- GAIN --->
 ```
 </br>
@@ -111,7 +111,8 @@ gmap.html  gmap.html.orig
 sudo systemctl stop set-gain  
 sudo systemctl disable set-gain  
 sudo rm /usr/lib/systemd/system/set-gain.service  
-sudo rm /usr/share/skyaware/html/gain.php  
+sudo rm /usr/share/gain.php  
+sudo rm /var/www/html/gain.php 
 sudo rm -rf /usr/local/sbin/gain  
 sudo lighty-disable-mod fastcgi-php  
 sudo service lighttpd force-reload  
@@ -156,7 +157,7 @@ Delete following 3 lines of code you have added just above line `<div class="but
 
 ```
     <div id="GAIN" style="text-align:center;width:175px;height:65px;">
-    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>
+    <iframe src=../../gain.php style="border:0;width:175px;height:65px;"></iframe>
     </div> <!----- GAIN --->
 ```
 
