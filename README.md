@@ -26,7 +26,7 @@ The set-gain app is started automatically at boot. It can also be started.stoppe
 `sudo systemctl restart set-gain ` </br>
 `sudo systemctl stop set-gain ` </br>
 
-**(C) OPTIONAL: Embedd "Set Gain" button into Skyview Map / Gmap** </br>
+**(C) OPTIONAL: Embedd "Set Gain" button into Skyaware Map / Gmap** </br>
 <details close>
 <summary>dump1090-fa (click to expand)</summary>
 </br>
