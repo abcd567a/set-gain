@@ -188,7 +188,7 @@ echo -e "\e[32m======================================= \e[39m"
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
 echo -e "\e[32m======================================= \e[39m"
 
-echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/tar1090/gain.php \e[39m"
+echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/gain.php \e[39m"
 
 echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Tar1090 Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
@@ -209,7 +209,7 @@ echo ""
 echo -e '\e[95mInsert\e[39m following 3 lines \e[95mJUST ABOVE\e[39m the line \e[32m<div class="buttonContainer"> \e[39m'
 echo ""
 echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
-echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
+echo '  <iframe src=../../gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
