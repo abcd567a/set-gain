@@ -18,7 +18,7 @@
 `sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/set-gain/master/raspbian+dump-mut.sh)" `
 </br></br>
 ### (B) After running above script, the gain add on is available in browser as follows: </br>
-**In dump1090-fa** at IP-of-Pi/skyaware/gain.php </br>
+**In dump1090-fa** at IP-of-Pi/gain.php </br>
 **In dump1090-mutability** at IP-of-Pi/dump1090/gain.php </br>
 
 The set-gain app is started automatically at boot. It can also be started.stopped/status by following commands: </br>
