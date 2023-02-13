@@ -25,10 +25,11 @@ echo "Enabling module fastcgi-php...."
 sudo lighty-enable-mod fastcgi-php
 sudo /etc/init.d/lighttpd force-reload
 
-
+echo "Creating folder gain...."
+sudo mkdir -p /usr/local/sbin/gain
 
 echo "Creating file gain.php...."
-FILE_GAIN="/usr/share/skyaware/html/gain.php"
+FILE_GAIN="/usr/local/sbin/gain/gain.php"
 sudo touch $FILE_GAIN
 
 echo "making file gain.php writeable by script (666)...."
@@ -87,9 +88,9 @@ echo "Code written to file gain.php...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
-
-echo "Creating folder gain...."
-sudo mkdir -p /usr/local/sbin/gain
+echo "Creating symlinks to file gain.php......"
+sudo ln -sf /usr/local/sbin/gain/gain.php /var/www/html/gain.php
+sudo ln -sf /usr/local/sbin/gain/gain.php /usr/share/gain.php
 
 echo "Creating file setgain.sh...."
 FILE_SETGAIN="/usr/local/sbin/gain/setgain.sh"
@@ -97,7 +98,6 @@ sudo touch $FILE_SETGAIN
 
 echo "making file setgain.sh writeable by script (666)...."
 sudo chmod 666 $FILE_SETGAIN
-
 
 echo "Writing code to file setgain.sh...."
 sudo cat <<\EOT > $FILE_SETGAIN
@@ -187,7 +187,7 @@ echo -e "\e[32m======================================= \e[39m"
 echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
 echo -e "\e[32m======================================= \e[39m"
 
-echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/gain.php \e[39m"
+echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/gain.php \e[39m"
 
 echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Skyaware Map \e[39m"
 echo "(2.1) Make a backup copy of file index.html by following commands..."
@@ -204,7 +204,7 @@ echo 'the cursor will jump to <div class="buttonContainer">'
 echo -e '\e[95mInsert\e[39m following 3 lines \e[95mJUST ABOVE\e[39m the line \e[32m<div class="buttonContainer"> \e[39m'
 echo ""
 echo '  <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
-echo '  <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
+echo '  <iframe src=../../gain.php style="border:0;width:175px;height:65px;"></iframe>'
 echo '  </div> <!----- GAIN --->'
 echo ""
 echo -e "(2.3) Save & Close file.  "
