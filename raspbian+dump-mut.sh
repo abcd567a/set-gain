@@ -186,7 +186,7 @@ echo ""
 echo "Creating backup copy of GMap file gmap.html ..."
 sudo cp /usr/share/dump1090-mutability/html/gmap.html /usr/share/dump1090-mutability/html/gmap.html.orig
 echo "Embeding Gain Button in gmap"
-sudo sed -i '/<div id="sudo_buttons">/i <div id="GAIN" style="text-align:center;width:175px;height:65px;">\n<iframe src=..\/..\/gain.php style="border:0;width:175px;height:65px;"><\/iframe>\n<\/div> <!----- GAIN --->' /usr/share/dump1090-mutability/html/gmap.html
+sudo sed -i '/<div id="sudo_buttons">/i <div id="GAIN" style="text-align:center;width:200px;height:65px;">\n<iframe src=..\/..\/gain.php style="border:0;width:200px;height:65px;"><\/iframe>\n<\/div> <!----- GAIN --->' /usr/share/dump1090-mutability/html/gmap.html
 echo ""
 
 echo -e "\e[32mStarting Set Gain add-on \e[39m"
