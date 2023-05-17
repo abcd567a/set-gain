@@ -19,15 +19,15 @@ if [[ $(dpkg-query -W -f='${STATUS}' php-cgi 2>/dev/null | grep -c "ok installed
   exit 1
 fi
 
-
 echo "Enabling module fastcgi-php...."
 sudo lighty-enable-mod fastcgi-php
 sudo /etc/init.d/lighttpd force-reload
 
-
+echo "Creating folder gain...."
+sudo mkdir -p /usr/local/sbin/gain
 
 echo "Creating file gain.php...."
-FILE_GAIN="/usr/share/dump1090-mutability/html/gain.php"
+FILE_GAIN="/usr/local/sbin/gain/gain.php"
 sudo touch $FILE_GAIN
 
 echo "making file gain.php writeable by script (666)...."
@@ -86,9 +86,9 @@ echo "Code written to file gain.php...."
 echo " Making it writeable by owner only (664)...."
 sudo chmod 644 $FILE_GAIN
 
-
-echo "Creating folder gain...."
-sudo mkdir -p /usr/local/sbin/gain
+echo "Creating symlinks to file gain.php......"
+sudo ln -sf /usr/local/sbin/gain/gain.php /var/www/html/gain.php
+sudo ln -sf /usr/local/sbin/gain/gain.php /usr/share/gain.php
 
 echo "Creating file setgain.sh...."
 FILE_SETGAIN="/usr/local/sbin/gain/setgain.sh"
