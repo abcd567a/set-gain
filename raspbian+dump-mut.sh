@@ -205,7 +205,7 @@ echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'sr
 echo ""
 echo ""
 echo -e "\e[32mGAIN BUTTONS EMBEDED IN GMAP\e[39m"
-echo -e "\e[95m(3) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[39m"
+echo -e "\e[95m(3) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gmap.html \e[39m"
 echo ""
 echo -e "\e[32m(5) Clear Browser cache (Ctrl+Shift+Delete) & Reload browser (Ctrl+F5) \e[39m"
 echo ""
