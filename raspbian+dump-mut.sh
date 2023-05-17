@@ -183,6 +183,9 @@ EOT
 
 sudo chmod 644 $SERVICE_FILE
 echo ""
+echo "Embeding Gain Button in gmap"
+sudo sed -i '/<div id="sudo_buttons">/i <div id="GAIN" style="text-align:center;width:175px;height:65px;">\n<iframe src=..\/..\/gain.php style="border:0;width:175px;height:65px;"><\/iframe>\n<\/div> <!----- GAIN --->' /usr/share/skyaware/html/index.html
+echo ""
 
 echo -e "\e[32mStarting Set Gain add-on \e[39m"
 sudo systemctl enable set-gain
