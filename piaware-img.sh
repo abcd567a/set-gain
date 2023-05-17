@@ -176,8 +176,9 @@ EOT
 
 sudo chmod 644 $SERVICE_FILE
 echo ""
-
-echo "Embeding Gain Button in Skyaware"
+echo "Creating backup copy of Skyaware Map file index.html ..."
+sudo cp /usr/share/skyaware/html/index.html /usr/share/skyaware/html/index.html.orig
+echo "Embeding Gain Button in Skyaware Map"
 sudo sed -i '/<div class="buttonContainer">/i <div id="GAIN" style="text-align:center;width:175px;height:65px;">\n<iframe src=..\/..\/gain.php style="border:0;width:175px;height:65px;"><\/iframe>\n<\/div> <!----- GAIN --->' /usr/share/skyaware/html/index.html
 echo ""
 echo -e "\e[32mStarting Set Gain add-on \e[39m"
