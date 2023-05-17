@@ -191,30 +191,19 @@ echo -e "\e[32mStarting Set Gain add-on \e[39m"
 sudo systemctl enable set-gain
 sudo systemctl start set-gain
 
-echo "=========================================="
-echo "PLEASE DO FOLLOWING:"
-echo "=========================================="
-
-echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/gain.php \e[39m"
-
-echo -e "\e[32m(2) OPTIONAL STEP: Embed Set Gain Button & Dropdown in Gmap \e[39m"
-echo "(2.1) Make a backup copy of file gmap.html by following commands:"
 echo ""
-echo "      cd /usr/share/dump1090-mutability/html  "
-echo "      sudo cp gmap.html gmap.html.orig "
+echo -e "\e[95mEMBEDED GAIN BUTTON IN GMAP\e[39m"
 echo ""
-echo "(2.2) Open file gmap.html for editing "
+echo -e "\e[32m======================================= \e[39m"
+echo -e "\e[32mSCRIPT COMPLETED INSTALLATION \e[39m"
+echo -e "\e[32m======================================= \e[39m"
 echo ""
-echo "      sudo nano /usr/share/dump1090-mutability/html/gmap.html "
+echo -e "\e[32mSTAND-ALONE GAIN BUTTON\e[39m"
+echo -e "\e[95m(1) In your browser, go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/gain.php \e[39m"
 echo ""
-echo "Press Ctrl+W and type  sudo_buttons  and press Enter key "
-echo 'the cursor will jump to <div id="sudo_buttons">'
-echo -e '\e[95mInsert\e[39m following 3 lines \e[95mJUST ABOVE\e[39m line \e[32m<div id="sudo_buttons"> \e[39m'
 echo ""
-echo '    <div id="GAIN" style="text-align:center;width:175px;height:65px;">'
-echo '    <iframe src=gain.php style="border:0;width:175px;height:65px;"></iframe>'
-echo '    </div> <!----- GAIN --->'
+echo -e "\e[32mGAIN BUTTONS EMBEDED IN GMAP\e[39m"
+echo -e "\e[95m(3) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/skyaware/ \e[39m"
 echo ""
-echo -e "(2.3) Save & Close file.  "
-echo -e "\e[95m(2.4) Go to http://$(ip route | grep -m1 -o -P 'src \K[0-9,.]*')/dump1090/ \e[39m"
-echo -e "\e[32m(2.5) Clear Browser cache (Ctrl+Shift+Delete) & Reload browser (Ctrl+F5) \e[39m"
+echo -e "\e[32m(5) Clear Browser cache (Ctrl+Shift+Delete) & Reload browser (Ctrl+F5) \e[39m"
+echo ""
