@@ -90,6 +90,7 @@ sudo chmod 644 $FILE_GAIN
 echo "Creating symlinks to file gain.php......"
 sudo ln -sf /usr/local/sbin/gain/gain.php /var/www/html/gain.php
 sudo ln -sf /usr/local/sbin/gain/gain.php /usr/share/gain.php
+sudo ln -sf /usr/local/sbin/gain/gain.php /usr/share/skyaware/html/gain.php  
 
 echo "Creating file setgain.sh...."
 FILE_SETGAIN="/usr/local/sbin/gain/setgain.sh"
