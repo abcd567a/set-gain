@@ -6,29 +6,40 @@
 
 
 
-### (A) From below choose the bash script which is applicable your install, copy-paste it in the SSH window, and press Enter key. </br>
+### (A) From below choose the bash script which is applicable your install, copy-paste it in the SSH window, and press Enter key. </br></br>
 
 **For Piaware SD card image** </br>
 `sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/set-gain/master/piaware-img.sh)" `
-</br></br>
-**For Raspbian image with dump1090-fa**</br>
+</br></br></br>
+**For Raspberry Pi OS image with package install of dump1090-fa**</br>
 `sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/set-gain/master/raspbian+dump-fa.sh)" `
+
 </br></br>
-**For Raspbian image with dump1090-mutability**</br>
+**For Raspberry Pi OS image with package install of dump1090-mutability**
+</br>
 `sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/set-gain/master/raspbian+dump-mut.sh)" `
 </br></br>
+
 ### (B) After running above script, the gain add on is available in browser as follows: </br>
-**In dump1090-fa** at IP-of-Pi/gain.php </br>
-**In dump1090-mutability** at IP-of-Pi/dump1090/gain.php </br>
+**In dump1090-fa** </br>
+(1) At IP-of-Pi/skyaware/ </br>
+(2) At IP-of-Pi/gain.php </br>
+
+**In dump1090-mutability** </br>
+(1) At IP-of-Pi/dump1090/gmap.html </br>
+(2) At IP-of-Pi/dump1090/gain.php </br>
 
 The set-gain app is started automatically at boot. It can also be started.stopped/status by following commands: </br>
 `sudo systemctl status set-gain ` </br>
 `sudo systemctl restart set-gain ` </br>
 `sudo systemctl stop set-gain ` </br>
 
-<s>**(C) OPTIONAL: Embedd "Set Gain" button into Skyaware Map / Gmap**</s> </br> **Now Automatically done by the script** <br>
+**Following option is now automatically done by the script. No more required to be done manually** 
+</br>
+
+<s>**(C) OPTIONAL: Embedd "Set Gain" button into Skyaware Map / Gmap**</s> </br> 
 <details close>
-<summary>dump1090-fa (click to expand)</summary>
+<summary><s>dump1090-fa (click to expand)</s></summary>
 </br>
 3.1 - Make a backup copy of file index.html by following commands:</br>
 
@@ -64,7 +75,7 @@ index.html  index.html.orig
 </details>
 
  <details close>
-<summary>dump1090-mutability (click to expand)</summary>
+<summary><s>dump1090-mutability (click to expand)</s></summary>
 </br>
 3.1 - Make a backup copy of file gmap.html by following commands: </br>
 
